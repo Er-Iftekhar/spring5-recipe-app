@@ -9,6 +9,7 @@ public class IndexController {
 
     @RequestMapping({"","/","index"})
     public String getIndexPage(){
+        System.out.println("SOme message to save:13hg4");
         return "index";
     }
 }
