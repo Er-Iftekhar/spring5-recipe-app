@@ -25,7 +25,6 @@ public class Recipe {
     @OneToMany(targetEntity = Ingredient.class,
     cascade = CascadeType.ALL,
     mappedBy = "recipe")
-
     private Set<Ingredient> ingredients=new HashSet<>();
 
     @Lob
@@ -44,6 +43,7 @@ public class Recipe {
     private Set<Category> categories=new HashSet<>();
 
 
+
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
@@ -52,6 +52,11 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
+    }
     public Long getId() {
         return id;
     }
@@ -130,6 +135,7 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Difficulty getDifficulty() {
