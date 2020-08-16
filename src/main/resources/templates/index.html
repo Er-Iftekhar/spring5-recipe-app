@@ -6,13 +6,19 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
           integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
-          crossorigin="anonymous">
+          crossorigin="anonymous"
+    >
+    <!--th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"-->
 
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script
             src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
             integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
             crossorigin="anonymous"></script>
+
+    <!--th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"-->
+
 </head>
 <body>
 
@@ -33,20 +39,25 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Description</th>
+                                <th>View</th>
                             </tr>
                             </thead>
 
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">123</td>
-                                <td th:text="${recipe.description}">Tasty Goodness</td>
+                                <td >123</td>
+                                <td >Tasty Goodness</td>
+                                <td><a href="#">View</a></td>
                             </tr>
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">123</td>
-                                <td th:text="${recipe.description}">Tasty Goodness</td>
+                                <td >123</td>
+                                <td >Tasty Goodness 2</td>
+                                <td><a href="#">View</a></td>
                             </tr>
                             <tr th:each="recipe : ${recipes}">
+                                <!--/*@thymesVar id="recipe type="com.app.utb.recipeproject.domain.Recipe"*/-->
                                 <td th:text="${recipe.id}">123</td>
                                 <td th:text="${recipe.description}">Tasty Goodness</td>
+                                <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
                             </tr>
                         </table>
 
